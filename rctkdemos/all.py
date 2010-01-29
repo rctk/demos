@@ -62,7 +62,7 @@ class Demo(object):
         self.load_demos(demos, panel, tk)
 
     def build_layouts(self, panel, tk):
-        demos = ("layouts_grid", "layouts_border", "layouts_ivo", "layouts_ivo_nested" )
+        demos = ("layouts_ivo", "layouts_ivo_nested" )
         
         self.load_demos(demos, panel, tk)
 

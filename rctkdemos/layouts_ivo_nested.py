@@ -1,4 +1,4 @@
-from demos import serve_demo
+from rctkdemos.demos import serve_demo
 from rctk.widgets import StaticText, Panel
 from rctk.layouts import IvoLayout
 
@@ -18,6 +18,7 @@ class Demo(object):
 
         parent.append(p1)
         parent.append(StaticText(tk, "expanding 2 cols"), layout={"expand_horizontal":True})
+        parent.layout()
 
 
 if __name__ == '__main__':

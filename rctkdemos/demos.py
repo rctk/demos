@@ -1,5 +1,4 @@
 from rctk.widgets import Window, StaticText, Panel
-from rctk.layouts import BorderLayout
 
 from rctk.receiver import serve
 
