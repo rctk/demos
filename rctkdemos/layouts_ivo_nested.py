@@ -1,15 +1,15 @@
 from rctkdemos.demos import serve_demo
 from rctk.widgets import StaticText, Panel
-from rctk.layouts import IvoLayout
+from rctk.layouts import Grid, VBox
 
 class Demo(object):
-    title = "Nested IvoLayout"
-    description = "Demonstrates a nested IvoLayout"
+    title = "Nested Grid / VBox Layout"
+    description = "Demonstrates nested layoutmanagers"
 
     def build(self, tk, parent):
-        parent.setLayout(IvoLayout(columns=1))
+        parent.setLayout(VBox())
         p1 = Panel(tk)
-        p1.setLayout(IvoLayout(columns=2))
+        p1.setLayout(Grid(columns=2))
 
         p1.append(StaticText(tk, " ( 1 , 1 ) "))
         p1.append(StaticText(tk, " ( 1 , 2 ) "))
