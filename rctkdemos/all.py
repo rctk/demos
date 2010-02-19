@@ -1,4 +1,4 @@
-from rctk.widgets import StaticText, Panel
+from rctk.widgets import StaticHTMLText, Panel
 from rctk.layouts import TabbedLayout
 
 from rctk.receiver import serve
@@ -50,14 +50,14 @@ class Demo(object):
 
             demopanel = DemoPanel(tk)
 
-            demopanel.descriptionpanel.append(StaticText(tk, demo.description))
-            demopanel.sourcepanel.append(StaticText(tk, sourcecode))
+            demopanel.descriptionpanel.append(StaticHTMLText(tk, demo.description))
+            demopanel.sourcepanel.append(StaticHTMLText(tk, sourcecode))
             demo.build(tk, demopanel.buildpanel)
 
             panel.append(demopanel, title=demo.title)
 
     def build_simple_controls(self, panel, tk):
-        demos = ("controls_button", 'controls_statictext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date')
+        demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date')
         
         self.load_demos(demos, panel, tk)
 
@@ -95,7 +95,7 @@ class Demo(object):
         self.build_events(self.events_panel, tk)
 
         mysource = open(make_py(__file__), "r").read()
-        self.mysource.append(StaticText(tk,highlight(mysource, self.lexer, self.formatter)))
+        self.mysource.append(StaticHTMLText(tk,highlight(mysource, self.lexer, self.formatter)))
         root.layout()
 
 def main():
