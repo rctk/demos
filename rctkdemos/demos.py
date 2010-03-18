@@ -1,7 +1,5 @@
 from rctk.widgets import Window, StaticText, Panel
 
-from rctk.receiver import serve
-
 from all import DemoPanel
 
 class DemoRunner(object):

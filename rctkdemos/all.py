@@ -1,8 +1,6 @@
 from rctk.widgets import StaticHTMLText, Panel
 from rctk.layouts import TabbedLayout
 
-from rctk.receiver import serve
-
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
@@ -98,8 +96,3 @@ class Demo(object):
         self.mysource.append(StaticHTMLText(tk,highlight(mysource, self.lexer, self.formatter)))
         root.layout()
 
-def main():
-    serve(Demo)
-
-if __name__ == '__main__':
-    main()
