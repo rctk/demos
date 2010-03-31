@@ -13,3 +13,8 @@ class DemoRunner(object):
 
 def serve_demo(demo_class):
     serve(DemoRunner, demo_class)
+
+def standalone(demo_class):
+    def factory():
+        return DemoRunner(demo_class)
+    return factory
