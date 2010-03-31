@@ -21,13 +21,15 @@ class Demo(object):
             self.tk.set_timer(self.timer_handler, 1000)
 
     def timer_handler(self, event):
+        if not self.running:
+            return # stop was pressed
+
         self.counter += 1
         if self.counter == 1:
             self.message.text = "%d events" % self.counter
         else:
             self.message.text = "%d events" % self.counter
-        if self.running:
-            self.tk.set_timer(self.timer_handler, 1000)
+        self.tk.set_timer(self.timer_handler, 1000)
 
     def build(self, tk, parent):
         self.tk = tk
