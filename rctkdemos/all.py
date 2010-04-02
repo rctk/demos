@@ -65,7 +65,7 @@ class Demo(object):
         self.load_demos(demos, panel, tk)
 
     def build_events(self, panel, tk):
-        demos = ("events_click", 'events_checkbox', 'events_radiobutton', 'events_timer')
+        demos = ("events_click", 'events_checkbox', 'events_timer')
         
         self.load_demos(demos, panel, tk)
 
