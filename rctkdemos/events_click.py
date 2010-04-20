@@ -1,4 +1,4 @@
-from demos import serve_demo
+from demos import serve_demo, standalone
 from rctk.widgets import StaticText, Button
 from rctk.layouts import Grid
 
@@ -26,6 +26,8 @@ class Demo(object):
 
         parent.append(self.message)
         parent.append(button)
+
+Standalone = standalone(Demo)
 
 if __name__ == '__main__':
     serve_demo(Demo)
