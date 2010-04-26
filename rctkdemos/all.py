@@ -59,6 +59,10 @@ class Demo(object):
         
         self.load_demos(demos, panel, tk)
 
+    def build_advanced_controls(self, panel, tk):
+        demos = ('controls_date', 'controls_grid')
+        self.load_demos(demos, panel, tk)
+
     def build_layouts(self, panel, tk):
         demos = ("layouts_power", "layouts_power_nested" )
         
@@ -76,6 +80,8 @@ class Demo(object):
 
         self.controls_panel = Panel(tk)
         self.controls_panel.setLayout(TabbedLayout())
+        self.advanced_panel = Panel(tk)
+        self.advanced_panel.setLayout(TabbedLayout())
         self.layouts_panel = Panel(tk)
         self.layouts_panel.setLayout(TabbedLayout())
         self.events_panel = Panel(tk)
@@ -84,11 +90,13 @@ class Demo(object):
         self.mysource = Panel(tk)
 
         root.append(self.controls_panel, title="Simple Controls")
+        root.append(self.advanced_panel, title="Advanced Controls")
         root.append(self.layouts_panel, title="Layouts")
         root.append(self.events_panel, title="Events")
         root.append(self.mysource, title="My Source")
 
         self.build_simple_controls(self.controls_panel, tk)
+        self.build_advanced_controls(self.advanced_panel, tk)
         self.build_layouts(self.layouts_panel, tk)
         self.build_events(self.events_panel, tk)
 

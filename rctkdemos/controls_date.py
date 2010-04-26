@@ -3,7 +3,7 @@ from rctk.widgets import Date
 
 class Demo(object):
     title = "Date"
-    description = "Demonstrates the Date control"
+    description = "Demonstrates the Date control. Click the input entry to make a calendar appear"
 
     def build(self, tk, parent):
         d = Date(tk) 
