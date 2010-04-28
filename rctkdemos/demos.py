@@ -23,6 +23,7 @@ class DemoRunner(object):
         self.demo.build(tk, p.buildpanel)
         p.sourcepanel.append(StaticHTMLText(tk, self.load_source(self.demo)))
         p.descriptionpanel.append(StaticHTMLText(tk, self.demo.description))
+        tk.root().layout()
 
 
 def serve_demo(demo_class):
