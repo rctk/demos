@@ -1,4 +1,4 @@
-from rctkdemos.demos import serve_demo
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticText, Panel
 from rctk.layouts import Grid, VBox
 
@@ -20,6 +20,7 @@ class Demo(object):
         parent.append(StaticText(tk, "expanding 2 cols"), layout={"expand_horizontal":True})
         parent.layout()
 
+Standalone = standalone(Demo)
 
 if __name__ == '__main__':
     serve_demo(Demo)
