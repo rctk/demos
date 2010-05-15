@@ -3,6 +3,16 @@ import sys, os
 
 version = '0.1'
 
+if sys.version_info[0] == 3: # python 3
+    install_requires=[
+          'rctk',
+    ]
+else:
+    install_requires=[
+          'rctk',
+          'pygments'
+    ]
+
 setup(name='rctkdemos',
       version=version,
       description="rctk demo's",
@@ -17,10 +27,7 @@ A demo application for the remote control toolkit (rctk)""",
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
-      install_requires=[
-          'rctk',
-          'pygments'
-      ],
+      install_requires=install_requires,
       entry_points={
         "console_scripts": [
         "demo = rctkdemos.all:main",
