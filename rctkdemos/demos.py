@@ -1,10 +1,8 @@
 from rctk.widgets import Window, StaticText, Panel, StaticHTMLText
 
-from all import DemoPanel, make_py
+from rctkdemos.all import DemoPanel, make_py
 
-from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import HtmlFormatter
+from rctkdemos.compat import highlight
 
 import sys
 
@@ -15,7 +13,7 @@ class DemoRunner(object):
     def load_source(self, klass):
         mod = sys.modules[klass.__module__]
         sourcecode = open(make_py(mod.__file__), "r").read()
-        return highlight(sourcecode, PythonLexer(), HtmlFormatter(noclasses=True))
+        return highlight(sourcecode)
 
     def run(self, tk):
         p = DemoPanel(tk)

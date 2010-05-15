@@ -1,4 +1,4 @@
-from demos import serve_demo, standalone
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import Text
 from rctk.layouts import VBox
 

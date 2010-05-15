@@ -1,4 +1,4 @@
-from demos import serve_demo, standalone
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticText, Button
 from rctk.layouts import Grid
 

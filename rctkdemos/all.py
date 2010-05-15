@@ -1,9 +1,7 @@
 from rctk.widgets import StaticHTMLText, Panel
 from rctk.layouts import TabbedLayout
 
-from pygments import highlight
-from pygments.lexers import PythonLexer
-from pygments.formatters import HtmlFormatter
+from rctkdemos.compat import highlight
 
 from os.path import splitext
 
@@ -28,8 +26,7 @@ class DemoPanel(Panel):
 
 class Demo(object):
     def __init__(self):
-        self.lexer = PythonLexer()
-        self.formatter = HtmlFormatter(noclasses=True)
+        pass
 
     def load_demo(self, name):
         mod = __import__(name, globals(), locals(), []) #, -1)
@@ -39,7 +36,7 @@ class Demo(object):
     def load_source(self, name):
         mod = __import__(name, globals(), locals(), []) #, -1)
         sourcecode = open(make_py(mod.__file__), "r").read()
-        return highlight(sourcecode, self.lexer, self.formatter)
+        return highlight(sourcecode)
 
     def load_demos(self, demos, panel, tk):
         for demoname in demos:
@@ -101,6 +98,6 @@ class Demo(object):
         self.build_events(self.events_panel, tk)
 
         mysource = open(make_py(__file__), "r").read()
-        self.mysource.append(StaticHTMLText(tk,highlight(mysource, self.lexer, self.formatter)))
+        self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
         root.layout()
 

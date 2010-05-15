@@ -1,4 +1,4 @@
-from demos import serve_demo
+from rctkdemos.demos import serve_demo
 from rctk.widgets import List
 
 class Demo(object):
