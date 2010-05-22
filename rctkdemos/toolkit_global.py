@@ -9,20 +9,20 @@ class Demo(object):
     description = "Demonstrates timers in RCTK"
 
     def __init__(self):
-        self.running = False
+        globalstate.running = False
 
     def startstop_handler(self, event):
-        if self.running:
+        if globalstate.running:
             self.startstop.text = "Start"
-            self.running = False
+            globalstate.running = False
             ## cancel the running timer
         else:
             self.startstop.text = "Stop"
-            self.running = True
+            globalstate.running = True
             self.tk.set_timer(self.timer_handler, 1000)
 
     def timer_handler(self, event):
-        if not self.running:
+        if not globalstate.running:
             return # stop was pressed
 
         globalstate.counter += 1
