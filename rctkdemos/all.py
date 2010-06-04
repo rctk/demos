@@ -101,3 +101,12 @@ class Demo(object):
         self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
         root.layout()
 
+def main():
+    """ for standalone running """
+    from rctk.webpy import serve
+    from rctk.sessions import Session, Manager
+    import os
+
+    manager = Manager(Session, Demo, os.getcwd())
+    serve(manager)
+
