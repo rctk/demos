@@ -96,8 +96,6 @@ class Demo(object):
     title = "Complex XML"
     description = "Complex nesting, layout, all kinds of controls"
 
-    states = "/-\\|"
-
     def build(self, tk, parent):
         self.counter = 0
         s = SimpleXMLBuilder(parent, self)
