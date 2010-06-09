@@ -70,6 +70,10 @@ class Demo(object):
         
         self.load_demos(demos, panel, tk)
 
+    def build_xml(self, panel, tk):
+        demos = ("xml_simple", "xml_complex")
+        
+        self.load_demos(demos, panel, tk)
 
     def run(self, tk):
         root = tk.root()
@@ -83,6 +87,8 @@ class Demo(object):
         self.layouts_panel.setLayout(TabbedLayout())
         self.events_panel = Panel(tk)
         self.events_panel.setLayout(TabbedLayout())
+        self.xml_panel = Panel(tk)
+        self.xml_panel.setLayout(TabbedLayout())
 
         self.mysource = Panel(tk)
 
@@ -90,12 +96,14 @@ class Demo(object):
         root.append(self.advanced_panel, title="Advanced Controls")
         root.append(self.layouts_panel, title="Layouts")
         root.append(self.events_panel, title="Events")
+        root.append(self.xml_panel, title="XML")
         root.append(self.mysource, title="My Source")
 
         self.build_simple_controls(self.controls_panel, tk)
         self.build_advanced_controls(self.advanced_panel, tk)
         self.build_layouts(self.layouts_panel, tk)
         self.build_events(self.events_panel, tk)
+        self.build_xml(self.xml_panel, tk)
 
         mysource = open(make_py(__file__), "r").read()
         self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
