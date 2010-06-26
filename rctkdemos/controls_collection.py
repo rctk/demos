@@ -11,21 +11,18 @@ class Demo(object):
         if len(self.text.value):
             self.collection.append(self.text.value)
             self.text.value = ''
-            self.collection.layout()
     
     def remove(self, event):
         if len(self.text.value):
             self.collection.remove(self.text.value)
             self.text.value = ''
-            self.collection.layout()
     
     def clear(self, event):
         self.collection.clear()
         self.text.value = ''
-        self.collection.layout()
     
     def build(self, tk, parent):
-        parent.setLayout(Grid(rows=2, columns=6))
+        parent.setLayout(Grid(rows=2, columns=4, expand_vertical=True))
         self.text = Text(tk)
         append_button = Button(tk, 'Append')
         append_button.click = self.append
@@ -35,11 +32,8 @@ class Demo(object):
         clear_button.click = self.clear
         parent.append(self.text)
         parent.append(append_button)
-        parent.append(StaticText(tk, ' or '))
         parent.append(remove_button)
-        parent.append(StaticText(tk, ' or '))
         parent.append(clear_button)
-        
         self.collection = Collection(tk, StaticText)
         self.collection.extend(['Hello', 'World', 'Bye'])
         parent.append(self.collection)
