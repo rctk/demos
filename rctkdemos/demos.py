@@ -1,4 +1,5 @@
 from rctk.widgets import Window, StaticText, Panel, StaticHTMLText
+from rctk.app import App
 
 from rctkdemos.all import DemoPanel, make_py
 
@@ -6,7 +7,7 @@ from rctkdemos.compat import highlight
 
 import sys
 
-class DemoRunner(object):
+class DemoRunner(App):
     def __init__(self, demo_class):
         self.demo = demo_class()
 
