@@ -26,6 +26,7 @@ class DemoPanel(Panel):
         self.append(self.descriptionpanel, title="Description")
 
 class Demo(App):
+    title = "RCTK Demo"
 
     def __init__(self):
         pass
@@ -79,6 +80,7 @@ class Demo(App):
 
     def run(self, tk):
         root = tk.root()
+
         root.setLayout(TabbedLayout())
 
         self.controls_panel = Panel(tk)
