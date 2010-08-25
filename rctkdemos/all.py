@@ -1,5 +1,6 @@
 from rctk.widgets import StaticHTMLText, Panel
 from rctk.layouts import TabbedLayout
+from rctk.app import App
 
 from rctkdemos.compat import highlight
 
@@ -24,7 +25,8 @@ class DemoPanel(Panel):
         self.append(self.sourcepanel, title="Source")
         self.append(self.descriptionpanel, title="Description")
 
-class Demo(object):
+class Demo(App):
+
     def __init__(self):
         pass
 
