@@ -4,84 +4,117 @@ from rctk.layouts import GridLayout
 
 class Calculator(object):
     title = "Calculator"
-    description = "Sample calculator app"
+    description = "Sample calculator application"
 
     def build(self, tk, parent):
+        def reset():
+            self.equation = ""
+            self.digits = 0
+            self.floating = 0
+            self.in_float = False
+
+        def val():
+            if self.in_float:
+                return "%d.%d" % (self.digits, self.floating)
+            return str(self.digits)
+
+        def digit(num):
+            if self.in_float:
+                self.floating *= 10
+                self.floating += num
+                self.display.text = val()
+            else:
+                self.digits *= 10
+                self.digits += num
+                self.display.text = str(self.digits)
+
+        def clear(e):
+            reset()
+            self.display.text = str(self.digits)
+
+        def point(e):
+            if not self.in_float:
+                self.in_float = True
+                self.display.text = str(self.digits) + "."
+
+        def op(operator):
+            self.equation += "%d.%d%s" % (self.digits, self.floating, operator)
+            self.digits = 0
+            self.floating = 0
+            self.in_float = False
+
+        def equals(e):
+            self.equation += val()
+            try:
+                res = eval(self.equation)
+                if res == int(res):
+                    self.display.text = "%d" % res
+                else:
+                    self.display.text = "%f" %  eval(self.equation)
+            except ZeroDivisionError, e:
+                self.display.text = "err"
+            reset()
+
+        reset()
+
         parent.setLayout(GridLayout(rows=6, columns=4))
 
-        self.value = 0
+        self.display = StaticText(tk, str(self.digits))
 
-        self.display = StaticText(tk, str(self.value))
+        ## buttons 0 .. 9
+        for n in range(0, 10):
+            b =  Button(tk, str(n))
+            b.click = lambda e, n=n: digit(n)
+            setattr(self, "b%d" % n, b)
 
         self.clear = Button(tk, "C")
         self.dummy = StaticText(tk, " ")
         self.divide = Button(tk, "/")
         self.multiply = Button(tk, "x")
-
-        self.b7  = Button(tk, "7")
-        self.b8  = Button(tk, "8")
-        self.b9  = Button(tk, "9")
-        self.substract = Button(tk, "-")
-
-        self.b4  = Button(tk, "4")
-        self.b5  = Button(tk, "5")
-        self.b6  = Button(tk, "6")
         self.plus = Button(tk, "+")
-
-        self.b1  = Button(tk, "1")
-        self.b2  = Button(tk, "2")
-        self.b3  = Button(tk, "3")
-
+        self.substract = Button(tk, "-")
         self.equals = Button(tk, "=")
-        self.b0 = Button(tk, "0")
         self.point = Button(tk, ".")
+
+        self.clear.click = clear
+        self.point.click = point
+        self.plus.click = lambda e: op("+")
+        self.substract.click = lambda e: op("-")
+        self.multiply.click = lambda e: op("*")
+        self.divide.click = lambda e: op("/")
+        self.equals.click = equals
 
         parent.append(self.display, row=0, col=0, colspan=4)
 
+        # C _ / *
         parent.append(self.clear, row=1, col=0)
         parent.append(self.dummy, row=1, col=1)
         parent.append(self.divide, row=1, col=2)
         parent.append(self.multiply, row=1, col=3)
 
+        # 7 8 9 -
         parent.append(self.b7, row=2, col=0)
         parent.append(self.b8, row=2, col=1)
         parent.append(self.b9, row=2, col=2)
         parent.append(self.substract, row=2, col=3)
 
+        # 4 5 6 +
         parent.append(self.b4, row=3, col=0)
         parent.append(self.b5, row=3, col=1)
         parent.append(self.b6, row=3, col=2)
         parent.append(self.plus, row=3, col=3)
 
+        # 1 2 3 =
         parent.append(self.b1, row=4, col=0)
         parent.append(self.b2, row=4, col=1)
         parent.append(self.b3, row=4, col=2)
         parent.append(self.equals, row=4, col=3, rowspan=2, expand_vertical=True)
 
+        # 0 .
         parent.append(self.b0, row=5, col=0, colspan=2, expand_horizontal=True)
         parent.append(self.point, row=5, col=2)
-
-        def add(num):
-            self.value *= 10
-            self.value += num
-            self.display.text = str(self.value)
-
-        def clear(e):
-            self.value = 0
-            self.display.text = str(self.value)
-
-        self.clear.click = clear
-        self.b0.click = lambda e: add(0)
-        self.b1.click = lambda e: add(1)
-        self.b2.click = lambda e: add(2)
-        self.b3.click = lambda e: add(3)
-        self.b4.click = lambda e: add(4)
-        self.b5.click = lambda e: add(5)
-        self.b6.click = lambda e: add(6)
-        self.b7.click = lambda e: add(7)
 
 Standalone = standalone(Calculator)
 
 if __name__ == '__main__':
     serve_demo(Demo)
-
