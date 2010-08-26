@@ -114,6 +114,8 @@ class Calculator(object):
         parent.append(self.b0, row=5, col=0, colspan=2, expand_horizontal=True)
         parent.append(self.point, row=5, col=2)
 
+Demo = Calculator # demorunner expects this
+
 Standalone = standalone(Calculator)
 
 if __name__ == '__main__':

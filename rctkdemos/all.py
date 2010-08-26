@@ -65,17 +65,18 @@ class Demo(App):
 
     def build_layouts(self, panel, tk):
         demos = ("layouts_power", "layouts_power_nested" )
-        
         self.load_demos(demos, panel, tk)
 
     def build_events(self, panel, tk):
         demos = ("events_click", 'events_checkbox', 'events_timer')
-        
         self.load_demos(demos, panel, tk)
 
     def build_xml(self, panel, tk):
         demos = ("xml_simple", "xml_complex")
-        
+        self.load_demos(demos, panel, tk)
+
+    def build_apps(self, panel, tk):
+        demos = ("app_calculator", )
         self.load_demos(demos, panel, tk)
 
     def run(self, tk):
@@ -93,6 +94,8 @@ class Demo(App):
         self.events_panel.setLayout(TabbedLayout())
         self.xml_panel = Panel(tk)
         self.xml_panel.setLayout(TabbedLayout())
+        self.apps_panel = Panel(tk)
+        self.apps_panel.setLayout(TabbedLayout())
 
         self.mysource = Panel(tk)
 
@@ -101,6 +104,7 @@ class Demo(App):
         root.append(self.layouts_panel, title="Layouts")
         root.append(self.events_panel, title="Events")
         root.append(self.xml_panel, title="XML")
+        root.append(self.apps_panel, title="Apps")
         root.append(self.mysource, title="My Source")
 
         self.build_simple_controls(self.controls_panel, tk)
@@ -108,6 +112,7 @@ class Demo(App):
         self.build_layouts(self.layouts_panel, tk)
         self.build_events(self.events_panel, tk)
         self.build_xml(self.xml_panel, tk)
+        self.build_apps(self.apps_panel, tk)
 
         mysource = open(make_py(__file__), "r").read()
         self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
