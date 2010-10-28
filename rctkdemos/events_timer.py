@@ -1,6 +1,6 @@
 from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticText, Button
-from rctk.layouts import Grid
+from rctk.layouts import GridLayout
 
 class Demo(object):
     title = "TimerHandler"
@@ -33,7 +33,7 @@ class Demo(object):
 
     def build(self, tk, parent):
         self.tk = tk
-        parent.setLayout(Grid(columns=2))
+        parent.setLayout(GridLayout(columns=2))
 
         self.startstop = Button(tk, "Start")
         self.message = StaticText(tk, "0 events")

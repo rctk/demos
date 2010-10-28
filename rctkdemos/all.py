@@ -64,7 +64,7 @@ class Demo(App):
         self.load_demos(demos, panel, tk)
 
     def build_layouts(self, panel, tk):
-        demos = ("layouts_power", "layouts_power_nested" )
+        demos = ("layouts_grid", "layouts_grid_gravity", "layouts_grid_expand" )
         self.load_demos(demos, panel, tk)
 
     def build_events(self, panel, tk):

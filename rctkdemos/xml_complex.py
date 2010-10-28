@@ -10,21 +10,21 @@ xmlui = """<?xml version="1.0"?>
             <text>Left</text>
             <flags>
               <row>0</row>
-              <col>0</col>
+              <column>0</column>
             </flags>
         </object>
         <object class="Button" name="button2">
             <text>Right</text>
             <flags>
               <row>0</row>
-              <col>2</col>
+              <column>2</column>
             </flags>
         </object>
         <object class="StaticText" name="state">
             <text>Hello World</text>
             <flags>
               <row>1</row>
-              <col>0</col>
+              <column>0</column>
               <colspan>3</colspan>
             </flags>
         </object>
@@ -32,7 +32,7 @@ xmlui = """<?xml version="1.0"?>
             <value>Some default text</value>
             <flags>
               <row>2</row>
-              <col>0</col>
+              <column>0</column>
               <colspan>2</colspan>
             </flags>
         </object>
@@ -61,14 +61,14 @@ xmlui = """<?xml version="1.0"?>
             </items>
             <flags>
               <row>2</row>
-              <col>2</col>
+              <column>2</column>
             </flags>
         </object>
         <object class="CheckBox" name="check">
             <checked>True</checked>
             <flags>
               <row>3</row>
-              <col>0</col>
+              <column>0</column>
             </flags>
         </object>
         <object class="Grid">
@@ -78,7 +78,7 @@ xmlui = """<?xml version="1.0"?>
              </cols>
              <flags>
                <row>3</row>
-               <col>1</col>
+               <column>1</column>
                <colspan>2</colspan>
                <rowspan>2</rowspan>
              </flags>
@@ -86,7 +86,7 @@ xmlui = """<?xml version="1.0"?>
         <object class="Date">
             <flags>
               <row>4</row>
-              <col>0</col>
+              <column>0</column>
             </flags>
         </object>
     </object>

@@ -57,9 +57,10 @@ class Calculator(object):
 
         reset()
 
-        parent.setLayout(GridLayout(rows=6, columns=4))
+        ## make it static, we want buttons to be equally sized.
+        parent.setLayout(GridLayout(rows=6, columns=4, padx=1, pady=1, static=True, sticky=GridLayout.NEWS))
 
-        self.display = StaticText(tk, str(self.digits))
+        self.display = StaticText(tk, str(self.digits), background="black", foreground="white")
 
         ## buttons 0 .. 9
         for n in range(0, 10):
@@ -84,35 +85,37 @@ class Calculator(object):
         self.divide.click = lambda e: op("/")
         self.equals.click = equals
 
-        parent.append(self.display, row=0, col=0, colspan=4)
+        parent.append(self.display, row=0, column=0, colspan=4)
 
         # C _ / *
-        parent.append(self.clear, row=1, col=0)
-        parent.append(self.dummy, row=1, col=1)
-        parent.append(self.divide, row=1, col=2)
-        parent.append(self.multiply, row=1, col=3)
+        parent.append(self.clear, row=1, column=0)
+        parent.append(self.dummy, row=1, column=1)
+        parent.append(self.divide, row=1, column=2)
+        parent.append(self.multiply, row=1, column=3)
 
         # 7 8 9 -
-        parent.append(self.b7, row=2, col=0)
-        parent.append(self.b8, row=2, col=1)
-        parent.append(self.b9, row=2, col=2)
-        parent.append(self.substract, row=2, col=3)
+        parent.append(self.b7, row=2, column=0)
+        parent.append(self.b8, row=2, column=1)
+        parent.append(self.b9, row=2, column=2)
+        parent.append(self.substract, row=2, column=3)
 
         # 4 5 6 +
-        parent.append(self.b4, row=3, col=0)
-        parent.append(self.b5, row=3, col=1)
-        parent.append(self.b6, row=3, col=2)
-        parent.append(self.plus, row=3, col=3)
+        parent.append(self.b4, row=3, column=0)
+        parent.append(self.b5, row=3, column=1)
+        parent.append(self.b6, row=3, column=2)
+        parent.append(self.plus, row=3, column=3)
 
         # 1 2 3 =
-        parent.append(self.b1, row=4, col=0)
-        parent.append(self.b2, row=4, col=1)
-        parent.append(self.b3, row=4, col=2)
-        parent.append(self.equals, row=4, col=3, rowspan=2, expand_vertical=True)
+        parent.append(self.b1, row=4, column=0)
+        parent.append(self.b2, row=4, column=1)
+        parent.append(self.b3, row=4, column=2)
+        parent.append(self.equals, row=4, column=3, rowspan=2)
 
         # 0 .
-        parent.append(self.b0, row=5, col=0, colspan=2, expand_horizontal=True)
-        parent.append(self.point, row=5, col=2)
+        parent.append(self.b0, row=5, column=0, colspan=2)
+        parent.append(self.point, row=5, column=2)
+	
+	parent.layout()
 
 Demo = Calculator # demorunner expects this
 

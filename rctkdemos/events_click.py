@@ -1,6 +1,6 @@
 from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticText, Button
-from rctk.layouts import Grid
+from rctk.layouts import GridLayout
 
 class Demo(object):
     title = "ClickHandler"
@@ -17,7 +17,7 @@ class Demo(object):
             self.message.text = "%d clicks" % self.counter
 
     def build(self, tk, parent):
-        parent.setLayout(Grid(columns=2))
+        parent.setLayout(GridLayout(columns=2))
 
         button = Button(tk, "Click me")
         self.message = StaticText(tk, "0 clicks")

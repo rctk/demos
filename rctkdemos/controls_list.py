@@ -1,13 +1,13 @@
 from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import List, StaticText
-from rctk.layouts import Grid
+from rctk.layouts import GridLayout
 
 class Demo(object):
     title = "List"
     description = "Demonstrates the List control"
 
     def build(self, tk, parent):
-        parent.setLayout(Grid(rows=3, columns=2))
+        parent.setLayout(GridLayout(rows=3, columns=2))
         parent.append(StaticText(tk, "Single"))
         parent.append(StaticText(tk, "Multiple"))
         l = List(tk, ((1, "Hello"), (2, "World"), (3, "Bye")))
