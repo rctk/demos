@@ -3,7 +3,7 @@ from rctk.widgets import StaticText, Panel
 from rctk.layouts import StaticVBox
 
 class Demo(object):
-    title = "Control gravity"
+    title = "Control expanding"
     description = "Demonstrates expanding controls"
 
     def build(self, tk, parent):
