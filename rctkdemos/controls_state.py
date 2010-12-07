@@ -7,19 +7,19 @@ class Demo(object):
 
     def build(self, tk, parent):
         button = Button(tk, "Click me!")
-        t1 = StaticText(tk, 'State:')
+        t1 = StaticText(tk, 'Enabled:')
         c1 = CheckBox(tk)
         t2 = StaticText(tk, 'Visible:')
         c2 = CheckBox(tk, checked=True)
 
         def toggle_state(x):
-            button.state = not button.state
+            button.enabled = not button.enabled
         c1.click = toggle_state
         def toggle_visibility(x):
             button.visible = c2.checked
         c2.click = toggle_visibility
 
-        button.state = Button.DISABLED
+        button.enabled = False
         parent.append(button)
         parent.append(t1)
         parent.append(c1)
