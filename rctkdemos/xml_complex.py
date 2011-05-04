@@ -1,6 +1,20 @@
 from rctkdemos.demos import serve_demo, standalone
 from rctk.xmlbuilder import SimpleXMLBuilder
 
+##  
+##          0               1               2
+##  0 [Button "Left"]                [Button "Right"]
+##  
+##  1 [                hello world                  ]
+##  
+##  2 [      Some default text     ] [   Dropdown   ]
+##  
+##  3 [   Checkbox   ]+ --------- grid -------------+
+##                    |                             |
+##  4 [   Date       ]+-----------------------------+
+##  
+
+
 xmlui = """<?xml version="1.0"?>
 <resource xmlns="http://www.wxwidgets.org/wxxrc" version="2.5.3.0">
     <object class="GridLayout">
