@@ -1,4 +1,4 @@
-from rctkdemos.demos import serve_demo
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import Date
 
 class Demo(object):
@@ -8,6 +8,8 @@ class Demo(object):
     def build(self, tk, parent):
         d = Date(tk) 
         parent.append(d)
+
+Standalone = standalone(Demo)
 
 if __name__ == '__main__':
     serve_demo(Demo)
