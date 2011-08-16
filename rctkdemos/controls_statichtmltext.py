@@ -1,4 +1,4 @@
-from rctkdemos.demos import serve_demo
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticHTMLText
 
 class Demo(object):
@@ -6,8 +6,10 @@ class Demo(object):
     description = "Demonstrates the StaticHTMLText control"
 
     def build(self, tk, parent):
-        static = StaticHTMLText(tk, "StaticText just <i>display</i> <b>some text</b>")
+        static = StaticHTMLText(tk, "StaticHTMLText <i>displays</i> <b>rich text</b>")
         parent.append(static)
+
+Standalone = standalone(Demo)
 
 if __name__ == '__main__':
     serve_demo(Demo)
