@@ -1,14 +1,26 @@
 from rctkdemos.demos import serve_demo, standalone
-from rctk.widgets import Dropdown
+from rctk.widgets import Dropdown, StaticText
 
 class Demo(object):
     title = "Dropdown"
     description = "Demonstrates the Dropdown control"
 
     def build(self, tk, parent):
-        dropdown = Dropdown(tk, ((1, "Hello"), (2, "World"), (3, "Bye")))
+        options = ((1, "Hello"), (2, "World"), (3, "Bye"), (4, "Last one"))
+        dropdown = Dropdown(tk, options[:-1])
+        msg = StaticText(tk, "Make a selection")
         parent.append(dropdown)
-        dropdown.add(4, "Last one")
+        parent.append(msg)
+        dropdown.add(*options[-1])
+
+        def click(e):
+            msg.text = "You clicked " + dict(options)[dropdown.value]
+
+        dropdown.click = click
+
+        ## select the item with key 2 - "World"
+        dropdown.value = 2
+
 
 Standalone = standalone(Demo)
 

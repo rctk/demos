@@ -32,7 +32,7 @@ class Demo(object):
         l.add(4, "almost last one")
         l.add(5, "Last one")
         ## make selection
-        l.value = 3
+        l.value = [3]
         l2.value = [1, 3, 5]
 
         out1.text = str(l.value)
