@@ -8,26 +8,20 @@ class Demo(object):
     title = "Image"
     description = "Demonstrates the Image control"
 
-    def __init__(self):
-        self.counter = 0
-        self.resources = []
-
-    def h(self, e):
-        self.counter += 1
-        self.img.resource = self.resources[self.counter % 12]
-        self.tk.set_timer(self.h, 250)
-
     def build(self, tk, parent):
-        self.tk = tk
-        for i in range(0, 12):
-            r = addResource(FileResource("resources/nyancat-%d.png" % i,
-                                         name="nyancat-%d" % i,
-                                         type="image/png"))
-            self.resources.append(r)
-        self.img = Image(tk, resource=self.resources[0])
-        parent.append(self.img)
-        self.tk.set_timer(self.h, 250)
-    
+        resources = [ 
+            addResource(FileResource("resources/nyancat-%d.png" % i,
+                                     name="nyancat-%d" % i,
+                                     type="image/png"))
+            for i in range(0, 12)]
+        img = Image(tk, resource=resources[0])
+        parent.append(img)
+
+        def update_image(i):
+            img.resource = resources[i]
+            tk.set_timer(lambda e: update_image((i+1) % 12), 250)
+
+        update_image(0)
     
 Standalone = standalone(Demo)
 
