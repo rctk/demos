@@ -1,4 +1,4 @@
-from rctkdemos.demos import serve_demo
+from rctkdemos.demos import serve_demo, standalone
 from rctk.widgets import StaticText
 from rctk.layouts import GridLayout
 
@@ -17,6 +17,8 @@ class Demo(object):
         parent.append(StaticText(tk, "Win 7", background="grey"))
         parent.append(StaticText(tk, "Win 8", background="brown"), rowspan=2, colspan=2)        
         parent.layout()
+
+Standalone = standalone(Demo)
 
 if __name__ == '__main__':
     serve_demo(Demo)
