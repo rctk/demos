@@ -1,4 +1,4 @@
-from rctk.widgets import Window, StaticText, Panel, StaticHTMLText
+from rctk.widgets import StaticHTMLText
 from rctk.app import App
 
 from rctkdemos.all import DemoPanel, make_py
@@ -26,6 +26,7 @@ class DemoRunner(App):
 
 
 def serve_demo(demo_class):
+    from rctk.webpy import serve
     serve(DemoRunner, demo_class)
 
 def standalone(demo_class):
