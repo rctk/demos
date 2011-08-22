@@ -60,7 +60,7 @@ class Demo(App):
         self.load_demos(demos, panel, tk)
 
     def build_advanced_controls(self, panel, tk):
-        demos = ('controls_date', 'controls_grid')
+        demos = ('controls_date', ) # XXX'controls_grid')
         self.load_demos(demos, panel, tk)
 
     def build_layouts(self, panel, tk):
@@ -72,7 +72,7 @@ class Demo(App):
         self.load_demos(demos, panel, tk)
 
     def build_xml(self, panel, tk):
-        demos = ("xml_simple", "xml_complex")
+        demos = ("xml_simple", ) # XXX "xml_complex")
         self.load_demos(demos, panel, tk)
 
     def build_apps(self, panel, tk):
