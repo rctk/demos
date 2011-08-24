@@ -3,8 +3,8 @@ from rctk.widgets import RadioButton, RadioGroup, StaticText
 from rctk.layouts import VBox
 
 class Demo(object):
-    title = "CheckBox"
-    description = "Demonstrates the CheckBox control"
+    title = "RadioButton"
+    description = "Demonstrates the RadioButton/RadioGroup control"
 
     def build(self, tk, parent):
         parent.setLayout(VBox())
