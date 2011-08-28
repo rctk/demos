@@ -35,11 +35,10 @@ class Demo(object):
 
     def open_a_lot(self, e):
         def hide_all():
-            if self.lots:
-                for w in self.lots:
-                    w.shut()
-                    w.destroy()
-                self.lots = []
+            while self.lots:
+                w = self.lots.pop()
+                w.shut()
+                w.destroy()
 
         if self.lots:
             hide_all()
@@ -50,7 +49,7 @@ class Demo(object):
                   ("left", "bottom"), ("center", "bottom"), ("right", "bottom")):
             l = ", ".join(p)
             w = Window(self.tk, l + " window", position=p)
-            w.append(StaticText(self.tk, ", ".join(p)))
+            w.append(StaticText(self.tk, l))
             w.open()
             w.close = lambda e: hide_all()
             self.lots.append(w)
