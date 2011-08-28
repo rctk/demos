@@ -6,7 +6,7 @@ class Demo(object):
     description = "Demonstrates the StaticText control"
 
     def build(self, tk, parent):
-        static = StaticText(tk, "StaticText just display some text")
+        static = StaticText(tk, "StaticText just displays some text")
         parent.append(static)
 
 Standalone = standalone(Demo)

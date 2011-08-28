@@ -7,6 +7,11 @@ class Demo(object):
 
     def build(self, tk, parent):
         button = Button(tk, "Click me!")
+
+        def click(e):
+            button.text = "Click me again!"
+
+        button.click = click
         parent.append(button)
 
 Standalone = standalone(Demo)
