@@ -55,7 +55,7 @@ class Demo(App):
             panel.append(demopanel, title=demo.title)
 
     def build_simple_controls(self, panel, tk):
-        demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image')
+        demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_window')
         
         self.load_demos(demos, panel, tk)
 
