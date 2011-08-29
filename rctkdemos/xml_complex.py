@@ -14,6 +14,7 @@ from rctk.xmlbuilder import SimpleXMLBuilder
 ##  4 [   Date       ]+-----------------------------+
 ##  
 
+## Grid replaced with Text - qx doesn't support grid (yet)
 
 xmlui = """<?xml version="1.0"?>
 <resource xmlns="http://www.wxwidgets.org/wxxrc" version="2.5.3.0">
@@ -85,11 +86,23 @@ xmlui = """<?xml version="1.0"?>
               <column>0</column>
             </flags>
         </object>
+        <!--
         <object class="Grid">
             <cols>
               <col><name>Foo</name></col>
               <col><name>Bar</name></col>
              </cols>
+             <flags>
+               <row>3</row>
+               <column>1</column>
+               <colspan>2</colspan>
+               <rowspan>2</rowspan>
+             </flags>
+        </object> -->
+        <object class="Text">
+            <rows>4</rows>
+            <columns>30</columns>
+            <value>I'm a large text area</value>
              <flags>
                <row>3</row>
                <column>1</column>

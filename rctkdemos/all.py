@@ -72,7 +72,7 @@ class Demo(App):
         self.load_demos(demos, panel, tk)
 
     def build_xml(self, panel, tk):
-        demos = ("xml_simple", ) # XXX "xml_complex")
+        demos = ("xml_simple", "xml_complex")
         self.load_demos(demos, panel, tk)
 
     def build_apps(self, panel, tk):
