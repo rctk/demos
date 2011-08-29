@@ -17,8 +17,6 @@ class Demo(object):
             self.message.text = "%d clicks" % self.counter
 
     def build(self, tk, parent):
-        parent.setLayout(GridLayout(columns=2))
-
         button = Button(tk, "Click me")
         self.message = StaticText(tk, "0 clicks")
 
