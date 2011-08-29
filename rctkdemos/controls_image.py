@@ -24,18 +24,12 @@ class Demo(object):
                 img.resource = resources[i]
                 tk.set_timer(lambda e: update_image((i+1) % 12), 250)
 
-        def stop(e):
-            self.running = False
-            button.text = "Start"
-            button.click = start
-
-        def start(e):
-            self.running = True
-            button.click = stop
-            button.text = "Stop"
+        def startstop(e):
+            button.text = self.running and "Start" or "Stop"
+            self.running = not self.running
             update_image(0)
 
-        button.click = start
+        button.click = startstop
 
 Standalone = standalone(Demo)
 
