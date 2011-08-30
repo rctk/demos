@@ -28,6 +28,14 @@ class DemoPanel(Panel):
 class Demo(App):
     title = "RCTK Demo"
 
+    frontend = None
+
+    controls_demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_window')
+    advanced_demos = ('controls_date', ) # XXX'controls_grid')
+    layout_demos = ("layouts_grid", "layouts_grid_gravity", "layouts_grid_expand" )
+    event_demos = ("events_click", 'events_checkbox', 'events_timer')
+    xml_demos = ("xml_simple", "xml_complex")
+    app_demos = ("app_calculator", )
     def __init__(self):
         pass
 
@@ -55,29 +63,22 @@ class Demo(App):
             panel.append(demopanel, title=demo.title)
 
     def build_simple_controls(self, panel, tk):
-        demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_window')
-        
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.controls_demos, panel, tk)
 
     def build_advanced_controls(self, panel, tk):
-        demos = ('controls_date', ) # XXX'controls_grid')
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.advanced_demos, panel, tk)
 
     def build_layouts(self, panel, tk):
-        demos = ("layouts_grid", "layouts_grid_gravity", "layouts_grid_expand" )
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.layout_demos, panel, tk)
 
     def build_events(self, panel, tk):
-        demos = ("events_click", 'events_checkbox', 'events_timer')
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.event_demos, panel, tk)
 
     def build_xml(self, panel, tk):
-        demos = ("xml_simple", "xml_complex")
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.xml_demos, panel, tk)
 
     def build_apps(self, panel, tk):
-        demos = ("app_calculator", )
-        self.load_demos(demos, panel, tk)
+        self.load_demos(self.app_demos, panel, tk)
 
     def run(self, tk):
         root = tk.root()
@@ -117,6 +118,16 @@ class Demo(App):
         mysource = open(make_py(__file__), "r").read()
         self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
         root.layout()
+
+from rctk.qx.frontend import QXFrontend
+from rctk.jquery.frontend import JQueryFrontend
+
+class QXDemo(Demo):
+    frontend = QXFrontend
+
+class JQueryDemo(Demo):
+    frontend = JQueryFrontend
+    advanced_demos = Demo.advanced_demos + ('controls_grid', )
 
 def main():
     """ for standalone running """
