@@ -14,6 +14,7 @@ class Demo(object):
                                      name="nyancat-%d" % i,
                                      type="image/png"))
             for i in range(0, 12)]
+        
         img = Image(tk, resource=resources[0])
         button = Button(tk, "Start")
         parent.append(img)
