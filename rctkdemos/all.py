@@ -30,7 +30,7 @@ class Demo(App):
 
     frontend = None
 
-    controls_demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_window')
+    controls_demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_panel', 'controls_window')
     advanced_demos = ('controls_date', ) # XXX'controls_grid')
     layout_demos = ("layouts_grid", "layouts_grid_gravity", "layouts_grid_expand" )
     event_demos = ("events_click", 'events_checkbox', 'events_timer')
