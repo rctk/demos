@@ -1,4 +1,5 @@
 from rctk.widgets import StaticHTMLText
+from rctk.layouts import GridLayout
 from rctk.app import App
 
 from rctkdemos.all import DemoPanel, make_py
@@ -18,7 +19,7 @@ class DemoRunner(App):
 
     def run(self, tk):
         p = DemoPanel(tk)
-        tk.root().append(p)
+        tk.root().append(p, sticky=GridLayout.NEWS)
         self.demo.build(tk, p.buildpanel)
         p.sourcepanel.append(StaticHTMLText(tk, self.load_source(self.demo)))
         p.descriptionpanel.append(StaticHTMLText(tk, self.demo.description))

@@ -1,5 +1,6 @@
 from rctk.widgets import StaticHTMLText, Panel
 from rctk.layouts import TabbedLayout
+from rctk.layouts import GridLayout
 from rctk.app import App
 
 from rctkdemos.compat import highlight
@@ -18,7 +19,7 @@ class DemoPanel(Panel):
         super(DemoPanel, self).__init__(tk)
         self.setLayout(TabbedLayout())
         self.buildpanel = Panel(tk)
-        self.sourcepanel = Panel(tk)
+        self.sourcepanel = Panel(tk, scrolling=True)
         self.descriptionpanel = Panel(tk)
 
         self.append(self.buildpanel, title="Demo")
@@ -98,7 +99,7 @@ class Demo(App):
         self.apps_panel = Panel(tk)
         self.apps_panel.setLayout(TabbedLayout())
 
-        self.mysource = Panel(tk)
+        self.mysource = Panel(tk, scrolling=True)
 
         root.append(self.controls_panel, title="Simple Controls")
         root.append(self.advanced_panel, title="Advanced Controls")
