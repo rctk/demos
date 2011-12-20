@@ -31,6 +31,7 @@ class Demo(App):
 
     frontend = None
 
+    zk_demos = ("controls_combo", )
     controls_demos = ("controls_button", 'controls_statictext', 'controls_statichtmltext', 'controls_text', 'controls_checkbox', 'controls_radiobutton', 'controls_dropdown', 'controls_list', 'controls_date', 'controls_state', 'controls_image', 'controls_panel', 'controls_window')
     advanced_demos = ('controls_date', ) # XXX'controls_grid')
     layout_demos = ("layouts_grid", "layouts_grid_gravity", "layouts_grid_expand" )
@@ -80,7 +81,10 @@ class Demo(App):
 
     def build_apps(self, panel, tk):
         self.load_demos(self.app_demos, panel, tk)
-
+        
+    def build_zk_controls(self, panel, tk):
+        self.load_demos(self.zk_demos, panel, tk)
+        
     def run(self, tk):
         root = tk.root()
 
@@ -98,6 +102,8 @@ class Demo(App):
         self.xml_panel.setLayout(TabbedLayout())
         self.apps_panel = Panel(tk)
         self.apps_panel.setLayout(TabbedLayout())
+        self.zk_panel = Panel(tk)
+        self.zk_panel.setLayout(TabbedLayout())        
 
         self.mysource = Panel(tk, scrolling=True)
 
@@ -107,6 +113,7 @@ class Demo(App):
         root.append(self.events_panel, title="Events")
         root.append(self.xml_panel, title="XML")
         root.append(self.apps_panel, title="Apps")
+        root.append(self.zk_panel, title="ZK Specific Controls")        
         root.append(self.mysource, title="My Source")
 
         self.build_simple_controls(self.controls_panel, tk)
@@ -115,6 +122,7 @@ class Demo(App):
         self.build_events(self.events_panel, tk)
         self.build_xml(self.xml_panel, tk)
         self.build_apps(self.apps_panel, tk)
+        self.build_zk_controls(self.zk_panel, tk)        
 
         mysource = open(make_py(__file__), "r").read()
         self.mysource.append(StaticHTMLText(tk,highlight(mysource)))
